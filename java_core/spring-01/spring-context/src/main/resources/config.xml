@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="ru.home.spring_context" />
+
+<!--    <bean id="cameraRoll" class="ru.home.spring_context.entities.ColorCameraRoll" />-->
+
+<!--    <bean id="cameraRoll" class="ru.home.spring_context.entities.BlackAndWhiteCameraRoll" />-->
+
+    <bean id="camera" class="ru.home.spring_context.entities.CameraImpl">
+        <property name="cameraRoll">
+            <ref bean="cameraRoll" />
+        </property>
+    </bean>
+</beans>
