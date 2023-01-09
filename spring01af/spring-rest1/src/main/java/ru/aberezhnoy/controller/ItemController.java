@@ -48,9 +48,9 @@ public class ItemController {
         Item item = new Item();
         Category category = categoryService
                 .findByTitle(dto
-                        .getCategoryTitle())
+                        .getCategory())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Category title = " + dto.getCategoryTitle() + " not found"));
+                        "Category title = " + dto.getCategory() + " not found"));
         item.setCategory(category);
         item.setTitle(dto.getTitle());
         item.setPrice(dto.getPrice());

@@ -68,9 +68,9 @@ public class ProductController {
         product.setTitle(productDto.getTitle());
         Category category = categoryService
                 .findByTitle(productDto
-                        .getCategoryTitle())
+                        .getCategory())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Category title = " + productDto.getCategoryTitle() + " not found"));
+                        "Category title = " + productDto.getCategory() + " not found"));
         product.setCategory(category);
         productService.save(product);
         return new ProductDto(product);
