@@ -1,0 +1,15 @@
+@startuml
+
+start
+: base, pow <
+: result = 1 ]
+
+while (pow > 0) is (yes)
+    : result = result * base;
+    : pow = pow - 1;
+endwhile (no)
+: result >
+
+end
+
+@enduml

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UsersPage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="users.js"></script>
+</head>
+
+<body ng-app="users">
+<div class="container" ng-controller="userController">
+    <form class="form-inline mt-3" novalidate ng-submit="loadUsers(minAge, maxAge, male, index)">
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="male-filter" class="sr-only">Male:</label>
+            <input ng-model="loadUsers.male" type="text" class="form-control"
+                   name="male" id="male-filter" placeholder="Male:">
+            <label for="minAge-filter" class="sr-only">MinAge:</label>
+            <input ng-model="loadUsers.minAge" type="number" class="form-control"
+                   name="minAge" id="minAge-filter" placeholder="Age from:">
+            <label for="maxAge-filter" class="sr-only">MaxAge:</label>
+            <input ng-model="loadUsers.maxAge" type="number" class="form-control"
+                   name="maxAge" id="maxAge-filter" placeholder="Age up to:">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" ng-click="loadUsers(male, minAge, maxAge)">Show</button>
+    </form>
+    <h1>Users</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <td>id</td>
+            <td>name</td>
+<!--            <td>age</td>-->
+<!--            <td>male</td>-->
+<!--            <td>email</td>-->
+<!--            <td>phone</td>-->
+<!--            <td>roles</td>-->
+            <td>actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="u in usersPage.content">
+            <td>{{u.id}}</td>
+            <td>{{u.name}}</td>
+<!--            <td>{{u.age}}</td>-->
+<!--            <td>{{u.male}}</td>-->
+<!--            <td>{{u.email}}</td>-->
+<!--            <td>{{u.phone}}</td>-->
+<!--            <td>{{u.roles}}</td>-->
+            <td>
+                <button class="btn btn-primary" ng-click="showInfo(u)">info<i class="far fa-trash-alt"></i></button>
+                <a class="btn btn-success"><i
+                        class="fas fa-edit">update</i></a>
+                <button type="submit" class="btn btn-danger" ng-click="delete(u)">delete<i class="far fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" ng-repeat="index in paginationArray">
+                    <button class="page-link" ng-click="loadUsers(index)">{{index}}</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <p></p>
+    <h3>New user</h3>
+    <form novalidate ng-submit="createNewUser()">
+        <input class="form-control" type="text" placeholder="Name" ng-model="new_user.name">
+        <br>
+        <input class="form-control" type="number" placeholder="Age title" ng-model="new_user.age">
+        <br>
+        <input class="form-control" type="text" placeholder="Male title" ng-model="new_user.male">
+        <br>
+        <input class="form-control" type="text" placeholder="Email title" ng-model="new_user.email">
+        <br>
+        <input class="form-control" type="number" placeholder="Phone title" ng-model="new_user.phone">
+        <br>
+        <input class="form-control" type="text" placeholder="Roles title" ng-model="new_user.roles">
+        <br>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+</body>
+</html>

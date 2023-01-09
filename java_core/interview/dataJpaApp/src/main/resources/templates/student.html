@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header.html :: head">
+</head>
+
+<body>
+
+<nav th:replace="fragments/header.html :: navigation">
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <a class="btn btn-primary" th:href="@{/student/new}">New Student</a>
+        </div>
+
+        <form class="form-inline mt-3" method="get">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="name-filter" class="sr-only">Name filter:</label>
+                <input th:value="${param.nameFilter}" type="text" class="form-control"
+                       name="nameFilter" id="name-filter" placeholder="Name filter">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Apply</button>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="minAge-filter" class="sr-only">MinAge filter:</label>
+                <input th:value="${param.minAgeFilter}" type="number" class="form-control"
+                       name="minAgeFilter" id="minAge-filter" placeholder="Age from:">
+
+                <label for="maxAge-filter" class="sr-only">MaxAgge filter:</label>
+                <input th:value="${param.maxAgeFilter}" type="number" class="form-control"
+                       name="maxAgeFilter" id="maxAge-filter" placeholder="Age up to:">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Show</button>
+        </form>
+
+        <div class="col-12">
+            <table class="table table-bordered my-2">
+                <thead>
+                <tr>
+                    <th th:replace="fragments/sort_header :: sort_header('Id', 'id')">Id</th>
+                    <th th:replace="fragments/sort_header :: sort_header('Name', 'name')">Name</th>
+                    <th th:replace="fragments/sort_header :: sort_header('Age', 'age')">Age</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:unless="${students.empty}" th:each="student : ${students}">
+                    <th scope="row" th:text="${student.id}">Id</th>
+                    <td th:text="${student.name}">Name</td>
+                    <td th:text="${student.age}">Age</td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/student/{id}(id = ${student.id})}"><i class="fas fa-edit"></i></a>
+                        <form class="d-inline" th:method="delete" th:action="@{/student/{id}(id = ${student.id})}">
+                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr th:if="${students.empty}">
+                    <td colspan="5">No data available</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-12">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item"
+                        th:classappend="${students.first} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{/student(nameFilter=${param.nameFilter}, page=${students.number}, size=${param.size}, sort=${param.sort})}" tabindex="-1">Previous</a>
+                    </li>
+
+                    <li class="page-item"
+                        th:each="num : ${#numbers.sequence(1, students.totalPages)}"
+                        th:classappend="${num == students.number + 1} ? 'active'" >
+                        <a class="page-link"
+                           th:href="@{/student(nameFilter=${param.nameFilter}, page=${num}, size=${param.size}, sort=${param.sort})}"
+                           th:text="${num}">1</a>
+                    </li>
+
+                    <li class="page-item"
+                        th:classappend="${students.last} ? 'disabled'">
+                        <a class="page-link"
+                           th:href="@{/student(nameFilter=${param.nameFilter}, page=${students.number + 2}, size=${param.size}, sort=${param.sort})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments/footer.html :: scripts">
+</th:block>
+
+</body>
+</html>

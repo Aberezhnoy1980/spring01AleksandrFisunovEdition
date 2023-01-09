@@ -13,7 +13,7 @@ public class TestBeanFactoryPostProcessor {
 
     for(String name: beanDefinitionNames) {
         BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
-        System.out.println(beanDefinition.toString());
+        System.out.println(beanDefinition);
         }
     }
 

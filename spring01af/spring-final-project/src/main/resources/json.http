@@ -1,0 +1,22 @@
+POST http://localhost:8190/market/auth
+accept: */*
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": 100
+}
+
+###
+
+# curl -X 'POST' \
+#  'http://localhost:8190/market/auth' \
+#  -H 'accept: */*' \
+#  -H 'Content-Type: application/json' \
+#  -d '{
+#  "username": "admin",
+#  "password": "100"
+#}'
+
+###
+

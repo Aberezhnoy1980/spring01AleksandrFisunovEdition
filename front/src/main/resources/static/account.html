@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-route.min.js"></script>-->
+    <script src="account.js"></script>
+</head>
+
+<body ng-app="account">
+
+<div ng-controller="accountController" xmlns="http://www.w3.org/1999/html">
+    <p>Добро пожаловать в личный кабинет</p>
+    <p></p>
+
+    <div class="statistic" style="display: flex; justify-content: space-between">
+
+        <div class="card" style="width: 18rem; justify-content: center">
+            <div class="card-body" style="justify-content: center">
+                <h4 class="card-title" style="text-align: center">Кол-во ДТ в работе:</h4>
+            </div>
+            <h2 style="text-align: center">{{statistic.quantityDeclarationInWork}}</h2>
+        </div>
+
+        <div class="card" style="width: 18rem; justify-content: center">
+            <div class="card-body" style="justify-content: center">
+                <h4 class="card-title" style="text-align: center">% ДТ со сроком выпуска не более 1 дня:</h4>
+            </div>
+            <h2 style="text-align: center">{{statistic.percentDeclarationIssuedWithOneDayOfMonth}} %</h2>
+        </div>
+
+        <div class="card" style="width: 18rem; justify-content: center">
+            <div class="card-body" style="justify-content: center">
+                <h4 class="card-title" style="text-align: center">% ДТ поданных до 12:00:</h4>
+            </div>
+            <h2 style="text-align: center">{{statistic.percentDeclarationFirstHalfOfTheDay}} %</h2>
+        </div>
+
+        <div class="card" style="width: 18rem; justify-content: center">
+            <div class="card-body" style="justify-content: center">
+                <h4 class="card-title" style="text-align: center">Средний срок выпуска ДТ:</h4>
+            </div>
+            <h2 style="text-align: center">{{statistic.averageDeclarationTimeOfReleaseByLastMonth}}</h2>
+        </div>
+
+    </div>
+
+    <p></p>
+    <p></p>
+
+    <div style="display: flex; justify-content: space-between">
+        <h3>Список ДТ</h3>
+        <button type="button" class="btn btn-outline-success" ng-click=download()>Download</button>
+    </div>
+    <p></p>
+
+    <form novalidate ng-submit="loadDeclarations()">
+        <div class="form-floating input-group-sm">
+            <input type="text" class="form-control" id="numberPartFilter" placeholder="введите номер"
+                   ng-model="filter.numberPart">
+            <label for="numberPartFilter">Номер декларации</label>
+        </div>
+        <p></p>
+        <button class="btn btn-outline-warning btn-sm" style="width: 100%;" type="submit">Найти</button>
+    </form>
+
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <td>ДТ №</td>
+            <td>Статус</td>
+            <td>Грузоотправитель</td>
+            <td>Инвойс</td>
+            <td>Фактурная стоимость</td>
+            <td>Дата и время подачи ДТ</td>
+            <td>Дата и время выпуска / отказа</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="d in declarationPage.items">
+            <td>{{d.number}}</td>
+            <td>{{d.status}}</td>
+            <td>{{d.consignor}}</td>
+            <td>{{d.invoiceData}}</td>
+            <td>{{d.goodsValue}}</td>
+            <td>{{d.dateOfSubmission}}</td>
+            <td>{{d.dateOfRelease}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="display: flex; justify-content: space-between">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" ng-repeat="pageIndex in pagesList">
+                    <button class="page-link" ng-click="loadProducts(pageIndex)">{{pageIndex}}</button>
+                </li>
+            </ul>
+        </nav>
+
+        <button type="button" class="btn btn-outline-primary btn-sm" ng-click="refresh()">Refresh</button>
+    </div>
+
+</div>
+
+</body>
+
+</html>

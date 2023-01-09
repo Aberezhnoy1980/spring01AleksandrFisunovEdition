@@ -1,0 +1,31 @@
+GET http://localhost:8080/app/students/json/1
+
+###
+
+GET http://localhost:8080/app/students/show_all
+
+###
+
+# curl -X 'POST'
+#  'http://localhost:8080/app/students/json'
+#  -H 'accept: */*'
+#  -H 'Content-Type: application/json'
+#  -d '{
+#  "id": 100,
+#  "name": "August",
+#  "score": 120
+#}'
+POST http://localhost:8080/app/students/json
+accept: */*
+Content-Type: application/json
+
+{
+  "id": 120,
+  "name": "October",
+  "score": 1
+}
+
+###
+
+
+

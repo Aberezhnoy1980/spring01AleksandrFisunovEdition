@@ -1,0 +1,33 @@
+GET http://localhost:8189/workshop/items
+
+###
+
+###
+
+# посмотреть CURL и потестить запросы можно с помощью swagger (не забываем подтянуть зависимость)
+# по адресу: http://localhost:port/context-path/swagger-ui/index.html
+
+# curl -X 'POST' \
+#  'http://localhost:8189/workshop/items' \
+#  -H 'accept: */*' \
+#  -H 'Content-Type: application/json' \
+#  -d '{
+#  "title": "item21",
+#  "price": 76,
+#  "categoryTitle": "commonCat"
+#}'
+
+POST http://localhost:8189/workshop/items
+accept: */*
+Content-Type: application/json
+
+{
+  "title": "item20",
+  "price": 152,
+  "categoryTitle": "commonCat"
+}
+
+###
+
+
+

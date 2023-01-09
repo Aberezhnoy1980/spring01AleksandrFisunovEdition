@@ -1,0 +1,46 @@
+GET http://localhost:8189/market/products/1
+
+###
+
+###
+
+# посмотреть CURL и потестить запросы можно с помощью swagger (не забываем подтянуть зависимость)
+# по адресу: http://localhost:port/context-path/swagger-ui/index.html
+
+# curl -X 'POST' \
+#  'http://localhost:8189/market/products' \
+#  -H 'accept: */*' \
+#  -H 'Content-Type: application/json' \
+#  -d '{
+#  "title": "eggs",
+#  "price": 76,
+#  "categoryTitle": "Food"
+#}'
+
+POST http://localhost:8189/market/products
+accept: */*
+Content-Type: application/json
+
+{
+  "title": "butter",
+  "price": 152,
+  "categoryTitle": "Food"
+}
+
+###
+
+
+POST http://localhost:8189/market/products
+accept: */*
+Content-Type: application/json
+
+{
+  "title": "sausage",
+  "price": 380,
+  "categoryTitle": "Food"
+}
+
+###
+
+
+

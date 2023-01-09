@@ -1,0 +1,1 @@
+streamFromFileEx: read from file with stream

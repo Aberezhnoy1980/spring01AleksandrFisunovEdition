@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ru.home.lesson1.homework1</OriginalElement>
+  <nodes>
+    <node x="198.00000000000003" y="169.0">ru.home.lesson1.homework1.ParticipantProfile</node>
+    <node x="284.0" y="648.0">ru.home.lesson1.homework1.Obstacle</node>
+    <node x="0.0" y="897.0">ru.home.lesson1.homework1.MainApp</node>
+    <node x="284.0" y="751.0">ru.home.lesson1.homework1.Pool</node>
+    <node x="568.0" y="751.0">ru.home.lesson1.homework1.Wall</node>
+    <node x="233.00000000000003" y="550.0">ru.home.lesson1.homework1.Robot</node>
+    <node x="250.00000000000003" y="0.0">ru.home.lesson1.homework1.Participant</node>
+    <node x="0.0" y="751.0">ru.home.lesson1.homework1.Cross</node>
+    <node x="482.0" y="550.0">ru.home.lesson1.homework1.Human</node>
+    <node x="0.0" y="550.0">ru.home.lesson1.homework1.Cat</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ru.home.lesson1.homework1.Cross" target="ru.home.lesson1.homework1.Obstacle" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="132.0" y="726.0" />
+      <point x="416.0" y="726.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="ru.home.lesson1.homework1.Wall" target="ru.home.lesson1.homework1.Obstacle" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="700.0" y="726.0" />
+      <point x="416.0" y="726.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="ru.home.lesson1.homework1.Cat" target="ru.home.lesson1.homework1.ParticipantProfile" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.5" />
+      <point x="106.5" y="525.0" />
+      <point x="347.5" y="525.0" />
+      <point x="0.0" y="165.5" />
+    </edge>
+    <edge source="ru.home.lesson1.homework1.Human" target="ru.home.lesson1.homework1.ParticipantProfile" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.5" />
+      <point x="600.0" y="525.0" />
+      <point x="347.5" y="525.0" />
+      <point x="0.0" y="165.5" />
+    </edge>
+    <edge source="ru.home.lesson1.homework1.Pool" target="ru.home.lesson1.homework1.Obstacle" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="ru.home.lesson1.homework1.ParticipantProfile" target="ru.home.lesson1.homework1.Participant" relationship="REALIZATION">
+      <point x="0.0" y="-165.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="ru.home.lesson1.homework1.Robot" target="ru.home.lesson1.homework1.ParticipantProfile" relationship="GENERALIZATION">
+      <point x="0.0" y="-26.5" />
+      <point x="0.0" y="165.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3641851106639839" showDependencies="false" x="416.0" y="487.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
