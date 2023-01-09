@@ -33,7 +33,8 @@ values ('item1', 123, 1),
        ('item17', 12, 1),
        ('item18', 1, 1),
        ('item19', 67, 1),
-       ('item20', 98, 1);
+       ('item20', 98, 1),
+       ('item21', 96, 15);
 create table products
 (
     id bigserial primary key,
